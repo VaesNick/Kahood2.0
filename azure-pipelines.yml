@@ -17,7 +17,7 @@ pool:
 steps:
 - task: Maven@3
   inputs:
-    mavenPomFile: 'Kahood2.0/pom.xml'
+    mavenPomFile: 'Kahood2/pom.xml'
     mavenOptions: '-Xmx3072m'
     javaHomeOption: 'JDKVersion'
     jdkVersionOption: '1.10'
