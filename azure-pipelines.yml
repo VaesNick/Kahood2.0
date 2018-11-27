@@ -26,3 +26,9 @@ steps:
     testResultsFiles: '**/TEST-*.xml'
     goals: 'package'
 
+- task: AzureRmWebAppDeployment@3
+  inputs:
+    azureSubscription: 'KahoodConnection'
+    WebAppName: 'Kahood2'
+    Package: '$(System.DefaultWorkingDirectory)/**/*.war'
+
