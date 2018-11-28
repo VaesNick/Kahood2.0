@@ -28,3 +28,9 @@
     azureSubscription: '<Azure service connection>'
     WebAppName: 'Kahood2'
     Package: '$(System.DefaultWorkingDirectory)/**/*.war'
+
+- task: AzureRmWebAppDeployment@3
+  inputs:
+    azureSubscription: 'KahoodConnection'
+    WebAppName: 'Kahood2'
+    Package: '$(System.DefaultWorkingDirectory)/**/*.war'
