@@ -25,7 +25,7 @@ public class TeamController {
         }
     }
 
-    @GetMapping(value = "/course/{id}/{name}")
+    @GetMapping(value = "/course/team/{id}/{name}")
     public ResponseEntity<Team> getAttr(@PathVariable(value="id") Long id, @PathVariable(value = "name") String name) {
         try {
             Team team = teamService.findTeamByIdAndName(id, name);
