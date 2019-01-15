@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+
     <list default="true" id="a08e6568-b0ad-4b9a-8ebd-11d27a6a73a8" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/Kahood2/src/main/java/Kahood2/Repositories/ITeamStudentRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -169,6 +170,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+
         <option value="$PROJECT_DIR$/Kahood2/pom.xml" />
         <option value="$PROJECT_DIR$/Kahood2/src/main/java/Kahood2/Services/TeamCourseService.java" />
         <option value="$PROJECT_DIR$/Kahood2/src/main/java/Kahood2/Repositories/ITeamCourseRepository.java" />
@@ -302,6 +304,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
@@ -325,26 +328,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
-    <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="SpringRest" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Kahood2.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="SPRING_BOOT_MAIN_CLASS" value="Kahood2.Application" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Spring Boot.Application" />
-      </list>
-    </recent_temporary>
-  </component>
+
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -405,11 +389,15 @@
       <window_info anchor="right" id="JSF" order="9" />
       <window_info anchor="right" id="CDI" order="10" />
       <window_info anchor="right" id="Bean Validation" order="11" />
-    </layout>
+
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
   </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
-  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Kahood2/src/main/WebContent/WEB-INF/views/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" selection-start-line="5" selection-end-line="5" selection-end-column="7" />
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Kahood2/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
