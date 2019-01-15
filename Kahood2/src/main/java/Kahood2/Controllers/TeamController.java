@@ -26,7 +26,7 @@ public class TeamController {
         }
     }
 
-    @GetMapping(value = "/course/{id}/{name}")
+    @GetMapping(value = "/course/team/{id}/{name}")
     public ResponseEntity<Team> getAttr(@PathVariable(value="id") Long id, @PathVariable(value = "name") String name) {
         try {
             Team team = teamService.findTeamByIdAndName(id, name);
@@ -34,6 +34,16 @@ public class TeamController {
         }
         catch (Exception e){
             return new ResponseEntity(e.getMessage() ,HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping(value = "/course/team/{id}")
+    public ResponseEntity<List<Team>> getAttr(@PathVariable(value="id") Long id) {
+        List<Team> teamlist = teamService.findAllTeamsByCourseId(id);
+        if (teamlist.isEmpty()) {
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<List<Team>>(teamlist, HttpStatus.OK);
         }
     }
 }

@@ -37,4 +37,9 @@ public class TeamServiceImpl implements TeamService {
     public void updateTeam(Team team) {
         teamRepository.save(team);
     }
+
+    @Override
+    public List<Team> findAllTeamsByCourseId(long id) {
+        return teamRepository.findByCourseId(id);
+    }
 }
