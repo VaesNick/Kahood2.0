@@ -4,12 +4,12 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "team")
+@Table(name = "Team")
 public class Team {
     @Id
     @Column(name = "teamId")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
 
     @Column(name = "courseId")
     private Long courseId;
@@ -50,13 +50,5 @@ public class Team {
 
     public void setMaxTeamSize(int maxTeamSize) {
         this.maxTeamSize = maxTeamSize;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 }

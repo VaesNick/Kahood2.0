@@ -12,5 +12,4 @@ public interface TeamService {
     public Team findTeamByIdAndName(Long id, String name);
     public void createTeam(Team team);
     public void updateTeam(Team team);
-    public List<Team> findAllTeamsByCourseId(long id);
 }

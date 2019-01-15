@@ -11,12 +11,12 @@ public class Course {
     private Long id;
     @Column(name = "courseName")
     private String courseName;
-
     //@Column(name = "TeamList")
     //private List<Team> teamList;
-
     @Column(name = "maxTeams")
     private int maxTeams;
+    @Column(name = "TeacherId")
+    private int teacherId;
 
     public Long getId() {
         return id;
@@ -50,4 +50,11 @@ public class Course {
         this.maxTeams = maxTeams;
     }
 
+    public int getTeacherId() {
+        return teacherId;
+    }
+
+    public void setTeacherId(int teacherId) {
+        this.teacherId = teacherId;
+    }
 }

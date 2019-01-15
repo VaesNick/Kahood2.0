@@ -1,28 +1,84 @@
 <template>
     <div id="container">
-        <input type="hidden" id="idField" :value="$route.params.id">
-        <h3 class="mt-4 mb-4 float-left">{{name}}</h3>
+        <div id="LoggedInAs">Logged in as {{username}}</div>
+        <div id="backButton"><router-link :to="{ name: 'LandingsPage'}">&#8617;</router-link></div>
+
+        <h3 class="mt-4 mb-4">{{name}}</h3>
 
         <table class="table" id="employeeTable" data-show-toggle="false">
             <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Amount of free spots</th>
-                    <th></th>
-                </tr>
+            <tr>
+                <th>Name</th>
+                <th>Amount of free spots</th>
+                <th></th>
+                <th>
+                    <button id="addGroupButton" @click="addGroup">Create new group</button>
+                </th>
+            </tr>
             </thead>
             <tbody>
-                <template v-for="g in groups">
-                        <tr v-bind:key="g.id">
-                            <td>{{g.name}}</td>
-                            <td>{{g.spots}} free</td>
-                            <td><button type="submit" @click="enroll($event)">Enroll</button></td>
-                            <td><button type="submit" @click="showParticipants(g.id)">Participants</button></td>
-                        </tr>
-                </template>
+            <template v-for="g in groups">
+                <tr v-bind:key="g.id">
+                    <td>{{g.name}}</td>
+                    <td>{{g.spots}} free</td>
+                    <td>
+                        <button type="submit" @click="enroll($event)">Enroll</button>
+                    </td>
+                    <td>
+                        <button type="submit" @click="showParticipants(g.id)">Participants</button>
+                    </td>
+                </tr>
+            </template>
             </tbody>
         </table>
-        <div id="participantsField" type="text" style="display:none"></div>
+
+        <form id="addGroupForm" class="hiddenOnLoad">
+            <table>
+                <tr>
+                    <td>
+                        <h3>Add group</h3>
+                    </td>
+                    <td>
+                        <input class="closeButton" type="button" style="float:right;" @click="hideForm" value="X"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label name="groupNameLabel">Group name:</label></td>
+                    <td><input type="text" id="groupNameText"/></td>
+                </tr>
+                <tr>
+                    <td><label name="amountOfFreeSpotsLabel">Amount of free spots:</label></td>
+                    <td><input type="text" id="amountOfFreeSpotsText"/></td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="submit" @click="createNewGroup">ADD</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+        <form>
+            <table id="usersInGroupTable" class="hiddenOnLoad">
+                <tr>
+                    <td>
+                        <h3>Add group</h3>
+                    </td>
+                    <td>
+                        <input class="closeButton" type="button" style="float:right;" @click="hideGroup" value="X"/>
+                    </td>
+                </tr>
+                <tr>
+                    <th>name</th>
+                </tr>
+
+                <template v-for="g in participantsOfSelectedGroup">
+                    <tr v-bind:key="g.name">
+                        <td>{{g.name}}</td>
+                    </tr>
+                </template>
+            </table>
+        </form>
     </div>
 </template>
 
@@ -31,39 +87,52 @@
 
         data() {
             return {
+                id: this.$route.params.id,
+                username: this.$route.params.username,
+                selectedGroup: '',
+                participantsOfSelectedGroup: [{name: "Jos"}, {name:"Bart"}],
                 name: 'Groups',
                 groups: [
-                    {id:'1', name: 'Group 1', spots: '5',participants: [{name:"Jos"}, {name:"Fred"}]},
-                    {id:'2', name: 'Group 2', spots: '5'},
-                    {id:'3', name: 'Group 3', spots: '5'}]
+                    {id: '1', name: 'Group 1', spots: '5', participants: [{name: "Jos"}, {name: "Fred"}]},
+                    {id: '2', name: 'Group 2', spots: '5'},
+                    {id: '3', name: 'Group 3', spots: '5'}]
             }
         },
         methods: {
-            showParticipants(id){
-                var participantsField = document.getElementById("participantsField");
-                participantsField.style.display = "block";
-
-                for(var i = 0; i < this.groups.length; i++){
-
-                    alert(this.groups[id - 1].id == id);
-                    if(this.groups.id == id){
-                        for (var j = 0; j < this.groups[id - 1].participants.length; j++){
-                            participantsField.innerHTML += this.groups[id - 1].participants[j].name;
-                        }
-                    }
-                }
+            showParticipants(id) {
+                this.selectedGroup = id;
+                document.getElementById("usersInGroupTable").style.display = "inline";
             },
             enroll: function (e) {
-                if((e.currentTarget).innerText == "Enroll"){
+                if ((e.currentTarget).innerText == "Enroll") {
                     (e.currentTarget).innerText = "Unroll";
-                } else{
+                    this.participantsOfSelectedGroup.push({name: this.username});
+                } else {
                     (e.currentTarget).innerText = "Enroll";
                 }
             },
+            addGroup() {
+                document.getElementById("addGroupForm").style.display = "inline";
+            },
+            hideForm(){
+                document.getElementById("groupNameText").value="";
+                document.getElementById("amountOfFreeSpotsText").value="";
+                document.getElementById("addGroupForm").style.display = "none";
+            },
+            hideGroup(){
+                document.getElementById("usersInGroupTable").style.display = "none";
+            },
+            createNewGroup(){
+                var name = document.getElementById("groupNameText").value;
+                var amountOfSpots = document.getElementById("amountOfFreeSpotsText").value;
+
+                alert("new group with name: " + name + " and " + amountOfSpots + " amount of free spots.")
+            },
             mounted() {
+
                 var self = this;
                 this.axios
-                    .get('http://localhost:8080/students/getAllCourses')
+                    .get('http://localhost:8080/course/' + this.$route.params.id)
                     .then(function (res) {
                         self.courseList = res.data;
                     })
@@ -79,7 +148,32 @@
     #container {
         width: 80%;
         background-color: #FF99;
-        display: inline-block;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .hiddenOnLoad{
+        display: none;
+    }
+
+    #LoggedInAs{
+        float: left;
+        font-size: 14px;
+    }
+    #backButton{
+        float: right;
+    }
+    #backButton a{
+        text-decoration: none;
+        color: black;
+    }
+
+    .closeButton{
+        border-radius: 10px;
+    }
+
+    .closeButton:hover{
+        background-color: red;
     }
 
     h1 {
@@ -88,13 +182,15 @@
         color: white;
     }
 
-    table{
+    table {
         width: 90%;
         display: inline;
     }
+
     th {
         text-align: left;
     }
+
     td {
         text-align: left;
         padding-right: 10px;
