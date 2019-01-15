@@ -9,8 +9,8 @@ Vue.use(Router)
 export default new Router({
     routes: [
         {
-            path: '/course/:id*',
-            name: 'Course',
+            path: '/course/:id',
+            name: 'CoursePage',
             component: CoursePage
         },
         {
