@@ -1,8 +1,9 @@
 <template>
 
     <div id="container">
+        <div id="LoggedInAs">Logged in as {{username}}</div>
+        <div id="backButton"><router-link :to="{ name: 'LandingsPage'}">&#8617;</router-link></div>
         <h3 class="mt-4 mb-4 float-left">{{name}}</h3>
-        <isTypingIcon></isTypingIcon>
         <table class="table" id="employeeTable" data-show-toggle="false">
             <thead>
                 <tr>
@@ -17,7 +18,7 @@
                         <td>{{c.name}}</td>
                         <td>{{c.credits}}</td>
                         <td>{{c.teacher}}</td>
-                        <td><button type="submit" @click="openCourse(c.id)">Groups</button></td>
+                        <td><button><router-link :to="{ name: 'CoursePage', params: {id: c.id, username }}">Groups</router-link></button></td>
                         <td>
 
 
@@ -35,6 +36,7 @@
         data() {
             return {
                 name: 'Courses',
+                username: "Jos",
                 courseList: [
                     {
                         id:'1',
@@ -68,10 +70,7 @@
             }
         },
         methods: {
-            openCourse(id) {
-                window.location.href = "http://localhost:8081/course/" + id;
-                //alert(id)
-            },
+
             mounted() {
                 var self = this;
                 this.axios
@@ -88,6 +87,13 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+    #LoggedInAs{
+        float: left;
+        font-size: 14px;
+    }
+    #backButton{
+        float: right;
+    }
     #container {
         width: 80%;
         background-color: #FF99;

@@ -5,9 +5,8 @@ import Kahood2.Services.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
@@ -26,7 +25,7 @@ public class TeamController {
         }
     }
 
-    @GetMapping(value = "/course/{id}/{name}")
+    @GetMapping(value = "/course/team/{id}/{name}")
     public ResponseEntity<Team> getAttr(@PathVariable(value="id") Long id, @PathVariable(value = "name") String name) {
         try {
             Team team = teamService.findTeamByIdAndName(id, name);
@@ -36,5 +35,22 @@ public class TeamController {
             return new ResponseEntity(e.getMessage() ,HttpStatus.NOT_FOUND);
         }
     }
+
+    @GetMapping(value = "/course/team/{id}")
+    public ResponseEntity<List<Team>> getAttr(@PathVariable(value="id") Long id) {
+        List<Team> teamlist = teamService.findAllTeamsByCourseId(id);
+        if (teamlist.isEmpty()) {
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<List<Team>>(teamlist, HttpStatus.OK);
+        }
+    }
+
+    @PostMapping(value = "/team")
+    public ResponseEntity createTeamStudent(@RequestBody Team team){
+        teamService.createTeam(team);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
 }
 
