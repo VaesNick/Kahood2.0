@@ -45,4 +45,11 @@ public class TeamStudentController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @DeleteMapping(value = "/teamStudent/{teamId}/{studentId}")
+    public ResponseEntity deleteQuiz(@PathVariable(value="teamId") long teamId, @PathVariable(value="studentId") long studentId) {
+        TeamStudent ts = new TeamStudent();
+        ts = teamStudentService.findByTeamAndStudentId(teamId, studentId);
+        teamStudentService.deleteTeamStudent(ts);
+        return new ResponseEntity("Object with id :" + studentId + " was deleted", HttpStatus.OK);
+    }
 }

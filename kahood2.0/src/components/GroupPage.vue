@@ -120,6 +120,12 @@
                         })
                 } else {
                     (e.currentTarget).innerText = "Enroll";
+                    self = this;
+                    this.axios
+                        .delete('http://localhost:8080/teamStudent/' + id + "/99999" )
+                        .then(function (res) {
+                            self.teamMemberList = res.data;
+                        })
                 }
             },
             openGroupForm() {
