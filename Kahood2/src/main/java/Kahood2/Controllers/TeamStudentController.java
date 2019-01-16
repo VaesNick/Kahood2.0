@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:8081")
 public class TeamStudentController {
 
     @Autowired
@@ -35,8 +36,11 @@ public class TeamStudentController {
         }
     }
 
-    @PostMapping(value = "/teamStudent")
-    public ResponseEntity createTeamStudent(@RequestBody TeamStudent ts){
+    @PostMapping(value = "/teamStudent/{teamId}/{studentId}")
+    public ResponseEntity createTeamStudent(@PathVariable(value="teamId") long teamId, @PathVariable(value="studentId") long studentId){
+        TeamStudent ts = new TeamStudent();
+        ts.setTeamId(teamId);
+        ts.setStudentId(studentId);
         teamStudentService.addTeamStudent(ts);
         return new ResponseEntity<>(HttpStatus.OK);
     }

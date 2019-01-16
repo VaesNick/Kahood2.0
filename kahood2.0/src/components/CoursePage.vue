@@ -12,20 +12,20 @@
                 <th>Amount of free spots</th>
                 <th></th>
                 <th>
-                    <button id="addGroupButton" @click="addGroup">Create new group</button>
+                    <button id="addGroupButton" @click="openGroupForm">Create new group</button>
                 </th>
             </tr>
             </thead>
             <tbody>
-            <template v-for="g in groups">
-                <tr v-bind:key="g.id">
-                    <td>{{g.name}}</td>
-                    <td>{{g.spots}} free</td>
+            <template v-for="t in teamList">
+                <tr v-bind:key="t.id">
+                    <td>{{t.teamName}}</td>
+                    <td>{{t.maxTeamSize}} free</td>
                     <td>
-                        <button type="submit" @click="enroll($event)">Enroll</button>
+                        <button type="submit" @click="enroll($event, t.id)">Enroll</button>
                     </td>
                     <td>
-                        <button type="submit" @click="showParticipants(g.id)">Participants</button>
+                        <button type="submit" @click="showParticipants(t.id)">Participants</button>
                     </td>
                 </tr>
             </template>
@@ -62,19 +62,19 @@
             <table id="usersInGroupTable" class="hiddenOnLoad">
                 <tr>
                     <td>
-                        <h3>Add group</h3>
+                        <h3>Participants</h3>
                     </td>
                     <td>
                         <input class="closeButton" type="button" style="float:right;" @click="hideGroup" value="X"/>
                     </td>
                 </tr>
                 <tr>
-                    <th>name</th>
+                    <th>Student ID</th>
                 </tr>
 
-                <template v-for="g in participantsOfSelectedGroup">
-                    <tr v-bind:key="g.name">
-                        <td>{{g.name}}</td>
+                <template v-for="tl in teamMemberList">
+                    <tr v-bind:key="tl.id">
+                        <td>studentId: {{tl.studentId}}</td>
                     </tr>
                 </template>
             </table>
@@ -90,28 +90,39 @@
                 id: this.$route.params.id,
                 username: this.$route.params.username,
                 selectedGroup: '',
-                participantsOfSelectedGroup: [{name: "Jos"}, {name:"Bart"}],
+                participantsOfSelectedGroup: [{name: "Jos"}, {name: "Bart"}],
                 name: 'Groups',
-                groups: [
-                    {id: '1', name: 'Group 1', spots: '5', participants: [{name: "Jos"}, {name: "Fred"}]},
-                    {id: '2', name: 'Group 2', spots: '5'},
-                    {id: '3', name: 'Group 3', spots: '5'}]
+                teamList: [],
+                teamMemberList: [],
             }
         },
         methods: {
             showParticipants(id) {
+
                 this.selectedGroup = id;
-                document.getElementById("usersInGroupTable").style.display = "inline";
+                var self = this;
+                this.axios
+                    .get('http://localhost:8080/teamStudent/' + this.selectedGroup)
+                    .then(function (res) {
+                        self.teamMemberList = res.data;
+                    })
+                document.getElementById("usersInGroupTable").style.display = "block";
+
             },
-            enroll: function (e) {
+            enroll: function (e, id) {
                 if ((e.currentTarget).innerText == "Enroll") {
                     (e.currentTarget).innerText = "Unroll";
-                    this.participantsOfSelectedGroup.push({name: this.username});
+                    var self = this;
+                    this.axios
+                        .post('http://localhost:8080/teamStudent/' + id + "/99999" )
+                        .then(function (res) {
+                            self.teamMemberList = res.data;
+                        })
                 } else {
                     (e.currentTarget).innerText = "Enroll";
                 }
             },
-            addGroup() {
+            openGroupForm() {
                 document.getElementById("addGroupForm").style.display = "inline";
             },
             hideForm(){
@@ -123,20 +134,25 @@
                 document.getElementById("usersInGroupTable").style.display = "none";
             },
             createNewGroup(){
-                var name = document.getElementById("groupNameText").value;
-                var amountOfSpots = document.getElementById("amountOfFreeSpotsText").value;
-
-                alert("new group with name: " + name + " and " + amountOfSpots + " amount of free spots.")
-            },
-            mounted() {
-
+                let groupname = document.getElementById("groupNameText").value;
+                let amountOfFreeSpots = document.getElementById("amountOfFreeSpotsText").value;
+                var team = {"courseId": this.id,"teamName": groupname, "maxTeamSize": amountOfFreeSpots};
                 var self = this;
                 this.axios
-                    .get('http://localhost:8080/course/' + this.$route.params.id)
+                    .post('http://localhost:8080/team', team)
                     .then(function (res) {
-                        self.courseList = res.data;
+                        self.teamMemberList = res.data;
                     })
-            }
+            },
+        },
+        mounted() {
+
+            var self = this;
+            this.axios
+                .get('http://localhost:8080/course/team/' + this.$route.params.id)
+                .then(function (res) {
+                    self.teamList = res.data;
+                })
         }
     }
 
@@ -145,6 +161,11 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+    #usersInGroupTable{
+        margin-left: auto;
+        margin-right: auto;
+    }
+
     #container {
         width: 80%;
         background-color: #FF99;
