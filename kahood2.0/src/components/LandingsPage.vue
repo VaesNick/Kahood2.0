@@ -1,5 +1,4 @@
 <template>
-
     <div id="container">
         <div id="LoggedInAs">Logged in as {{username}}</div>
         <div id="backButton"><router-link :to="{ name: 'LandingsPage'}">&#8617;</router-link></div>
@@ -9,7 +8,7 @@
                 <tr>
                     <th>Name</th>
                     <th>Credits</th>
-                    <th>Teacher</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -19,8 +18,6 @@
                         <td>{{c.maxTeams}}</td>
                         <td><button><router-link :to="{ name: 'CoursePage', params: {id: c.id, username }}">Groups</router-link></button></td>
                         <td>
-
-
                         </td>
                     </tr>
                 </template>
