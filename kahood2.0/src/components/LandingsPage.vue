@@ -17,8 +17,7 @@
                         <td>{{c.courseName}}</td>
                         <td>{{c.maxTeams}}</td>
                         <td><button><router-link :to="{ name: 'CoursePage', params: {id: c.id, username }}">Groups</router-link></button></td>
-                        <td>
-                        </td>
+                        <td></td>
                     </tr>
                 </template>
             </tbody>
