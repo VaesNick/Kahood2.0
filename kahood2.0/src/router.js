@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import CoursePage from './components/CoursePage'
+import GroupPage from './components/GroupPage'
 import LandingsPage from './components/LandingsPage'
 import LoginPage from './components/LoginPage'
 
@@ -15,8 +15,8 @@ export default new Router({
         },
         {
             path: '/course/:id*',
-            name: 'CoursePage',
-            component: CoursePage
+            name: 'GroupPage',
+            component: GroupPage
         },
         {
             path: '/',
