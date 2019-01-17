@@ -3,15 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a08e6568-b0ad-4b9a-8ebd-11d27a6a73a8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Kahood2/src/main/java/Kahood2/Controllers/TeamStudentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Kahood2/src/main/java/Kahood2/Controllers/TeamStudentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Kahood2/target/classes/Kahood2/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/Kahood2/target/classes/Kahood2/Application.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Kahood2/target/classes/Kahood2/Controllers/TeamStudentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/Kahood2/target/classes/Kahood2/Controllers/TeamStudentController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Kahood2/target/classes/Kahood2/Models/Student.class" beforeDir="false" afterPath="$PROJECT_DIR$/Kahood2/target/classes/Kahood2/Models/Student.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Kahood2/target/classes/Kahood2/Services/CourseService.class" beforeDir="false" afterPath="$PROJECT_DIR$/Kahood2/target/classes/Kahood2/Services/CourseService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Kahood2/target/classes/Kahood2/Services/CourseServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/Kahood2/target/classes/Kahood2/Services/CourseServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Kahood2/target/classes/Kahood2/Services/StudentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/Kahood2/target/classes/Kahood2/Services/StudentService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Kahood2/target/classes/Kahood2/Services/StudentServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/Kahood2/target/classes/Kahood2/Services/StudentServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Kahood2/target/classes/Kahood2/Services/TeamStudentServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/Kahood2/target/classes/Kahood2/Services/TeamStudentServiceImpl.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/Kahood2/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -42,6 +33,11 @@
           <entry key="JAVA" value="84" />
         </counts>
       </usages-collector>
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+        </counts>
+      </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
@@ -58,7 +54,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Kahood2/src/main/java/Kahood2/Controllers/TeamStudentController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="428">
+            <state relative-caret-position="681">
               <caret line="51" column="47" selection-start-line="51" selection-start-column="47" selection-end-line="51" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -179,11 +175,10 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="169" />
-    <option name="y" value="-15" />
-    <option name="width" value="1616" />
-    <option name="height" value="876" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-7" />
+    <option name="width" value="1217" />
+    <option name="height" value="1047" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -249,6 +244,12 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="Kahood2" type="462c0819:PsiDirectoryNode" />
               <item name="Services" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Kahood2.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Kahood2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Kahood2.0" type="b2602c69:ProjectViewProjectNode" />
@@ -351,7 +352,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547558527024" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Kahood2.0" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.0" />
   </component>
@@ -394,11 +395,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3397000" />
+    <option name="totallyTimeSpent" value="5046000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="1217" height="1047" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18150389" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -410,7 +410,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.32974428" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32968238" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32968238" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -517,7 +517,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Kahood2/src/main/java/Kahood2/Controllers/TeamStudentController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="428">
+        <state relative-caret-position="681">
           <caret line="51" column="47" selection-start-line="51" selection-start-column="47" selection-end-line="51" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
