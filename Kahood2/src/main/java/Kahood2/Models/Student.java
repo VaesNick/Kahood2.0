@@ -1,5 +1,7 @@
 package Kahood2.Models;
 
+import Kahood2.Services.IIdGenerator;
+
 import javax.persistence.*;
 
 @Entity
@@ -67,5 +69,9 @@ public class Student {
 
     public void setPassword(String password) {
         Password = password;
+    }
+
+    public Student(IIdGenerator idGen){
+        this.setStudentNumber(idGen.generateId());
     }
 }
