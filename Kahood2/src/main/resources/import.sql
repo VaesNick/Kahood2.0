@@ -1,0 +1,16 @@
+INSERT INTO student (Name,LastName,UserName,Password,StudentNumber) VALUES('Nick','Vaes','NickVaes1993','Password123',111);
+INSERT INTO student (Name,LastName,UserName,Password,StudentNumber) VALUES('Steffen','Lenearts','SteffenLenearts','Password456',222);
+INSERT INTO student (Name,LastName,UserName,Password,StudentNumber) VALUES('Jonathan','Lauwers','JonathanLauwers','Password789',333);
+INSERT INTO student (Name,LastName,UserName,Password,StudentNumber) VALUES('Niels','Vaes','NielsVaesPassword','Password456',444);
+INSERT INTO team (teamId, courseId, teamName, maxSize) VALUES (1,1,'KahoodCrew', 5);
+INSERT INTO team (courseId, teamName, maxSize) VALUES (1,'KahoodCrew2,0', 5);
+INSERT INTO course (id, courseName,maxTeams) VALUES(1,'Software Analysis' , 5);
+INSERT INTO course (id, courseName,maxTeams) VALUES(2,'Java' , 5);
+INSERT INTO teamStudent(id, teamId, studentId) VALUES (1,1,111);
+INSERT INTO teamStudent(id, teamId, studentId) VALUES (2,1,444);
+INSERT INTO teamStudent(teamId, studentId) VALUES (2,222);
+INSERT INTO teamStudent(teamId, studentId) VALUES (2,223);
+INSERT INTO teamStudent(teamId, studentId) VALUES (2,224);
+INSERT INTO teamStudent(teamId, studentId) VALUES (2,225);
+INSERT INTO teamStudent(teamId, studentId) VALUES (2,226);
+INSERT INTO teamStudent(teamId, studentId) VALUES (2,2227);

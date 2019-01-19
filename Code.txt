@@ -1,0 +1,36 @@
+--------------------------------------------------- Put in build file java project
+<plugins>
+    <!--*************************************************-->
+    <!-- Deploy to Tomcat in App Service Linux           -->
+    <!--*************************************************-->
+
+    <plugin>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>azure-webapp-maven-plugin</artifactId>
+        <version>1.4.0</version>
+        <configuration>
+
+            <!-- Web App information -->
+            <resourceGroup>${RESOURCEGROUP_NAME}</resourceGroup>
+            <appName>${WEBAPP_NAME}</appName>
+            <region>${REGION}</region>
+
+            <!-- Java Runtime Stack for Web App on Linux-->
+            <linuxRuntime>tomcat 8.5-jre8</linuxRuntime>
+
+        </configuration>
+    </plugin>
+</plugins>
+
+--------------------------------------------------------------------- put in yml build file
+- task: AzureRmWebAppDeployment@3
+  inputs:
+    azureSubscription: '<Azure service connection>'
+    WebAppName: 'Kahood2'
+    Package: '$(System.DefaultWorkingDirectory)/**/*.war'
+
+- task: AzureRmWebAppDeployment@3
+  inputs:
+    azureSubscription: 'KahoodConnection'
+    WebAppName: 'Kahood2'
+    Package: '$(System.DefaultWorkingDirectory)/**/*.war'
