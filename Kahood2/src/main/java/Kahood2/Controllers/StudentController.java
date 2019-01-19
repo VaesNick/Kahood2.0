@@ -13,8 +13,16 @@ import java.util.List;
 @RestController
 public class StudentController {
 
-    @Autowired
     StudentService studentService;
+
+    @Autowired
+    public StudentController(StudentService studentService){
+        this.studentService = studentService;
+    }
+
+    public StudentController(){
+
+    }
 
     @GetMapping(value = "/student")
     public ResponseEntity<List<Student>> GetAll() {
