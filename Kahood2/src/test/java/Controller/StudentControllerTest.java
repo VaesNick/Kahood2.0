@@ -35,8 +35,8 @@ public class StudentControllerTest {
         List<Student> entity = (List<Student>) response.getBody();
 
 
-        Assert.assertEquals(400, response.getStatusCodeValue());
-        Assert.assertNotSame(studentList, entity);
-        verify(studentService, times(2)).findAllStudents();
+        Assert.assertEquals(200, response.getStatusCodeValue());
+        Assert.assertSame(studentList, entity);
+        verify(studentService, times(1)).findAllStudents();
     }
 }
