@@ -26,13 +26,3 @@ steps:
     testResultsFiles: '**/TEST-*.xml'
     goals: 'package'
 
-- task: NodeTool@0 
-  inputs:
-    versionSpec: '10.13'
-
-- script: |
-    npm install
-    npm run build
-  displayName: 'npm install and build'
-
-
