@@ -4,7 +4,7 @@ INSERT INTO student (Name,LastName,UserName,Password,StudentNumber) VALUES('Jona
 INSERT INTO student (Name,LastName,UserName,Password,StudentNumber) VALUES('Niels','Vaes','NielsVaesPassword','Password456',444);
 INSERT INTO team (teamId, courseId, teamName, maxSize) VALUES (1,1,'KahoodCrew', 5);
 INSERT INTO team (courseId, teamName, maxSize) VALUES (1,'KahoodCrew2,0', 5);
-INSERT INTO course (id, courseName,maxTeams) VALUES(1,'Software Analysis' , 5);
-INSERT INTO course (id, courseName,maxTeams) VALUES(2,'Java' , 5);
+INSERT INTO course (id, courseName,maxTeams,maxTeamSize) VALUES(1,'Software Analysis' , 5,5);
+INSERT INTO course (id, courseName,maxTeams, maxTeamSize) VALUES(2,'Java' , 5,3);
 INSERT INTO teamStudent(id, teamId, studentId) VALUES (1,1,111);
 INSERT INTO teamStudent(id, teamId, studentId) VALUES (2,1,444);

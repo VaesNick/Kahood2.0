@@ -12,6 +12,9 @@ public class Course {
     @Column(name = "courseName")
     private String courseName;
 
+    @Column(name = "maxTeamSize")
+    private int maxTeamSize;
+
     //@Column(name = "TeamList")
     //private List<Team> teamList;
 
@@ -50,4 +53,11 @@ public class Course {
         this.maxTeams = maxTeams;
     }
 
+    public int getMaxTeamSize() {
+        return maxTeamSize;
+    }
+
+    public void setMaxTeamSize(int maxTeamSize) {
+        this.maxTeamSize = maxTeamSize;
+    }
 }
