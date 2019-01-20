@@ -14,8 +14,16 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:8081")
 public class StudentController {
 
-    @Autowired
     StudentService studentService;
+
+    @Autowired
+    public StudentController(StudentService studentService){
+        this.studentService = studentService;
+    }
+
+    public StudentController(){
+
+    }
 
     @GetMapping(value = "/student")
     public ResponseEntity<List<Student>> GetAll() {
