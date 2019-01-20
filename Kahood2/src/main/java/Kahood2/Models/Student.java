@@ -74,4 +74,8 @@ public class Student {
     public Student(IIdGenerator idGen){
         this.setStudentNumber(idGen.generateId());
     }
+
+    public Student(){
+        
+    }
 }
