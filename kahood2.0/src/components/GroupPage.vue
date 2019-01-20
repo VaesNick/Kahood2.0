@@ -55,6 +55,11 @@
                         <button type="submit" @click="createNewGroup">ADD</button>
                     </td>
                 </tr>
+                <tr>
+                    <td>
+                        <label style="display: none" id="errorMsg">Max amount of teams reached</label>
+                    </td>
+                </tr>
             </table>
         </form>
 
@@ -89,6 +94,7 @@
             return {
                 id: this.$route.params.id,
                 username: this.$route.params.username,
+                maxTeams: this.$route.params.maxTeams,
                 selectedGroup: '',
                 participantsOfSelectedGroup: [{name: "Jos"}, {name: "Bart"}],
                 name: 'Groups',
@@ -140,19 +146,36 @@
                 document.getElementById("usersInGroupTable").style.display = "none";
             },
             createNewGroup(){
-                let groupname = document.getElementById("groupNameText").value;
-                let amountOfFreeSpots = document.getElementById("amountOfFreeSpotsText").value;
-                var team = {"courseId": this.id,"teamName": groupname, "maxTeamSize": amountOfFreeSpots};
                 var self = this;
                 this.axios
-                    .post('http://localhost:8080/team', team)
+                    .get('http://localhost:8080/course/' + this.id)
                     .then(function (res) {
-                        self.teamMemberList = res.data;
+                        alert(res.data.maxTeams);
+                        self.maxTeams = res.data.maxTeams;
+                        alert(self.maxTeams);
                     })
+
+
+                alert("id" + this.id);
+                alert("maxteams" + self.maxTeams);
+                alert("teamlist" + this.teamList.length);
+                if(this.maxTeams >= this.teamList.length){
+                    let groupname = document.getElementById("groupNameText").value;
+                    let amountOfFreeSpots = document.getElementById("amountOfFreeSpotsText").value;
+                    var team = {"courseId": this.id,"teamName": groupname, "maxTeamSize": amountOfFreeSpots};
+                    self = this;
+                    this.axios
+                        .post('http://localhost:8080/team', team)
+                        .then(function (res) {
+                            self.teamMemberList = res.data;
+                        })
+                } else{
+                    document.getElementById("errorMsg").style.display = "block";
+                    document.getElementById("errorMsg").style.color = "red";
+                }
             },
         },
         mounted() {
-
             var self = this;
             this.axios
                 .get('http://localhost:8080/course/team/' + this.$route.params.id)

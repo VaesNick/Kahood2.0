@@ -16,7 +16,7 @@
                     <tr v-bind:key="c.id">
                         <td>{{c.courseName}}</td>
                         <td>{{c.maxTeams}}</td>
-                        <td><button><router-link :to="{ name: 'GroupPage', params: {id: c.id, username }}">Groups</router-link></button></td>
+                        <td><button><router-link :to="{ name: 'GroupPage', params: {id: c.id, username, maxTeams: c.maxTeams }}">Groups</router-link></button></td>
                         <td></td>
                     </tr>
                 </template>

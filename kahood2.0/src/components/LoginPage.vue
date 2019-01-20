@@ -5,7 +5,7 @@
      <input type="text" v-model="loginName" />
      <br>
      <br>
-     <label>passwoord:</label>
+     <label>password:</label>
      <input type="password" v-model="password"/>
      <br>
      <br>
@@ -31,37 +31,19 @@
     },
     methods: {
       login(){
-        
-       for (let index = 0; index < this.userList.length; index++){
-           var elementName = this.userList[index].name;
-           var elementPassword = this.userList[index].password;
+          for (let index = 0; index < this.usersList.length; index++){
+              var elementName = this.usersList[index].name;
+              var elementPassword = this.usersList[index].password;
 
-           if(this.loginName == elementName && this.password == elementPassword){
-               this.loginSucces ="Succesfully logged in!";
-                break;
-                
-           }else{
-               this.loginSucces = "Wrong credentials!"
-           }
-       }
-    
-        this.loginSucces = "not entered";
+              if(this.loginName == elementName && this.password == elementPassword  ){
+                  this.loginSucces ="Succesfully logged in!";
+                  this.$router.push({ name: 'LandingsPage'});
+                  break;
 
-
-
-        // for (let index = 0; index < this.usernames.length; index++) {
-        //   var elementName= this.usernames[index].name;
-
-        //   if(this.loginName == element && this.password == "password"){
-        //     this.loginSucces = "Succesfully logged in"
-        //     break;
-        //   }else{
-        //     this.loginSucces = "Wrong credentials"
-        //   }
-        // }
-
-      
-        
+              }else{
+                  this.loginSucces = "Wrong credentials!"
+              }
+          }
       }
     },
     mounted() {

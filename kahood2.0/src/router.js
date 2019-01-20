@@ -19,11 +19,11 @@ export default new Router({
             component: GroupPage
         },
         {
-            path: '/',
+            path: '/LandingsPage',
             name: 'LandingsPage',
             component: LandingsPage
         },
-        {path:"*", redirect:"/"}
+        {path:"*", redirect:"/login"}
     ],
     mode: "history"
 })
